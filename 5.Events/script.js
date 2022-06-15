@@ -17,24 +17,23 @@ const clickOnSquare = (e) => {
   
   let addSquare = document.createElement("div");
   let addLi = document.createElement("li");
-
+  const showColor = () => {
+    alert(color)
+  }
   setSquare.append(addSquare)
   addSquare.classList.add("displayedsquare", color)
+  addSquare.addEventListener("click", showColor);
 
   setUl.append(addLi)
   addLi.innerHTML = `${time} ${color} square`
+
+  addSquare.addEventListener("click", showColor);
 }
 
 const actionSquares = document.querySelectorAll('.actionsquare')
 for (let actionSquare of actionSquares) {
   actionSquare.addEventListener('click', clickOnSquare)
 }
-
-const showColor = (e)=>{
-  let color = e.target.classList[1];
-  return alert(color)
-}
-setSquare.addEventListener("click", showColor)
 
 document.addEventListener("keyup", event => {
   let time = getElapsedTime();
@@ -50,7 +49,6 @@ document.addEventListener("keyup", event => {
     let addLi = document.createElement("li");
     setUl.append(addLi);
     addLi.innerHTML = `${time} ${color} espace`;
-
     return;
   }
   
